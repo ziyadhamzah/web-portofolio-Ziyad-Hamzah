@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { CodeIcon, PersonIcon, GlobeIcon } from "./Icons";
 import { profile } from "@/lib/data";
+import BlurText from "./BlurText";
 
 export default function Landing() {
   const [loaded, setLoaded] = useState(false);
@@ -133,12 +134,12 @@ export default function Landing() {
       </div>
 
       {/* =====================================================
-          MAIN TITLE
+          MAIN TITLE (BlurText effect)
       ===================================================== */}
 
       <div className="relative px-4">
-        <h1
-          className={`
+        <div
+          className="
             font-display
             text-[32px]
             sm:text-[42px]
@@ -147,44 +148,27 @@ export default function Landing() {
             leading-[1.15]
             tracking-tight
             max-w-3xl
-
-            transition-all
-            duration-[1200ms]
-            ease-[cubic-bezier(0.22,1,0.36,1)]
-
-            ${
-              loaded
-                ? "opacity-100 translate-y-0 blur-0"
-                : "opacity-0 translate-y-10 blur-md"
-            }
-          `}
+            mx-auto
+          "
         >
-          <span
-            className="
-              inline-block
-              transition-all
-              duration-500
-              hover:tracking-[-0.02em]
-            "
-          >
-            Welcome to my
-          </span>
+          <BlurText
+            text="Welcome to my"
+            animateBy="words"
+            direction="top"
+            delay={120}
+            stepDuration={0.35}
+            className="justify-center"
+          />
 
-          <br />
-
-          <span
-            className="
-              inline-block
-              text-white
-              transition-all
-              duration-500
-              hover:scale-[1.015]
-              hover:[text-shadow:0_0_30px_rgba(255,255,255,0.2)]
-            "
-          >
-            Portfolio Website
-          </span>
-        </h1>
+          <BlurText
+            text="Portfolio Website"
+            animateBy="words"
+            direction="top"
+            delay={120}
+            stepDuration={0.35}
+            className="justify-center text-white"
+          />
+        </div>
 
         {/* SUBTLE LIGHT EFFECT */}
 
